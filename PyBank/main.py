@@ -29,7 +29,7 @@ with open(csv_budget) as budget_data:
 
     # print(budget_amount)
 
-total_num_months = count(day)
+total_num_months = len(day)
 
 print(total_num_months)
 
