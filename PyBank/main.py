@@ -43,10 +43,17 @@ for x in budget_amount:
 print(total_profit_loss)
 #print(budget_amount)
 
-# Find monthly budget changes
+# Find monthly profit/loss changes
 for i in range(1, len(budget_amount)):
     monthly_difference.append(int(budget_amount[i]) - int(budget_amount[i - 1]))
 
 print("monthly difference: ", str(monthly_difference))
 
+# Find the largest monthly change in profit/loss
+max_profit_loss_change = max(monthly_difference)
+print(max_profit_loss_change)
+
+# Find the smallest monthly change in profit/loss
+min_profit_loss_change = min(monthly_difference)
+print(min_profit_loss_change)
 
