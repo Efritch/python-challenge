@@ -82,8 +82,8 @@ print("----------------------------")
 print(f"Total Months: {total_num_months}")
 print(f"Total: ${total_profit_loss}")
 print(f"Average Change: ${(rounded_average)}")
-print(f"Greatest Increase in Profits: {max_month}: ({max_profit_loss_change})")
-print(f"Greatest Decrease in Profits: {min_month}: ({min_profit_loss_change})")
+print(f"Greatest Increase in Profits: {max_month}: (${max_profit_loss_change})")
+print(f"Greatest Decrease in Profits: {min_month}: (${min_profit_loss_change})")
 
 #File path to write to
 output_path = os.path.join("..", "Analysis", "pybank_results.csv")
@@ -94,9 +94,5 @@ with open(output_path, "w") as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=',')
 
     csvwriter.writerow(["Financial Analysis"])
-    csvwriter.writerow(["---------------------------"])
-    csvwriter.writerow(["Total Months: "] + ['total_num_months'])
-    csvwriter.writerow(["Total: $"] + ['total_profit_loss'])
-    csvwriter.writerow(["Average Change: $"] + ['rounded_average'])
-    csvwriter.writerow(["Greatest Increase in Profits: "] + ['max_month'] + [" "] + ['max_profit_loss_change'])
-    csvwriter.writerow(["Greatest Decrease in Profits: "] + ['min_month'] + [" "] + ['min_profit_loss_change'])
+    csvwriter.writerow(["Total Months", "Total", "Average Change", "Greatest Increase Month", "Greatest Increase in Profits", "Greatest Decrease Month", "Greatest Decrease in Profits"])
+    csvwriter.writerow([total_num_months, total_profit_loss, rounded_average, max_month, max_profit_loss_change, min_month, min_profit_loss_change])
