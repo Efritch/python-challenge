@@ -1,5 +1,4 @@
 # This is the solution to run for the PyPoll assignment
-
 import os
 import csv
 import operator
@@ -61,6 +60,7 @@ for x in candidate_data:
         otooley_vote_count.append(candidate_data[x])
   
 
+# Determines the percentage of the total vote each candidate received.
 votes_for_khan = len(khan_vote_count)
 votes_for_correy = len(correy_vote_count)
 votes_for_li = len(li_vote_count)
@@ -75,6 +75,7 @@ otooley_vote_pct = "{:.3%}".format(votes_for_otooley / total_votes)
 # Create a dictionary that lists the candidate and their total vote counts.
 vote_summary = {"Khan": [votes_for_khan], "Correy": [votes_for_correy], "Li": [votes_for_li], "O'Tooley": [votes_for_otooley]}
 
+# Determines the winner of the election by finding the candidate with the greatest number of votes.
 winner = max(vote_summary,key = vote_summary.get)
 
 
@@ -93,14 +94,14 @@ print(f"Winner: {winner}")
 print("----------------------------")
 
 
-#File path to write to
-#output_path = os.path.join("..", "Analysis", "pybank_results.csv")
+# File path to write to
+output_path = os.path.join("..", "Analysis", "pypoll_results.csv")
 
-#Open the file using "write" mode. Specify the variable to hold the contents
-#with open(output_path, "w") as csvfile:
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, "w") as csvfile:
 
-#    csvwriter = csv.writer(csvfile, delimiter=',')
+    csvwriter = csv.writer(csvfile, delimiter=',')
 
-#    csvwriter.writerow(["Financial Analysis"])
-#    csvwriter.writerow(["Total Months", "Total", "Average Change", "Greatest Increase Month", "Greatest Increase in Profits", "Greatest Decrease Month", "Greatest Decrease in Profits"])
-#    csvwriter.writerow([total_num_months, total_profit_loss, rounded_average, max_month, max_profit_loss_change, min_month, min_profit_loss_change])
+    csvwriter.writerow(["Election Results"])
+    csvwriter.writerow(["Total Votes", "Votes For Khan", "Khan Vote Pct", "Votes For Correy", "Correy Vote Pct", "Votes For Li", "Li Vote Pct", "Votes For O'Tooley", "O'Tooley Vote Pct", "Winner"])
+    csvwriter.writerow([total_votes, votes_for_khan, khan_vote_pct, votes_for_correy, correy_vote_pct, votes_for_li, li_vote_pct, votes_for_otooley, otooley_vote_pct, winner])
