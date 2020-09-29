@@ -2,7 +2,7 @@
 
 import os
 import csv
-import numpy as np
+import statistics
 
 # Set path for file
 csv_budget = os.path.join("..", "Resources", "budget_data.csv")
@@ -29,31 +29,58 @@ with open(csv_budget) as budget_data:
 
         budget_amount.append(row[1])
 
-    # print(budget_amount)
 
 # Finds the total number of months in the data file
 total_num_months = len(day)
 
-print(total_num_months)
+#print(total_num_months)
 
 for x in budget_amount:
         total_profit_loss = total_profit_loss + int(x)
     # return total_profit_loss
 
-print(total_profit_loss)
-#print(budget_amount)
+#print(total_profit_loss)
+
 
 # Find monthly profit/loss changes
 for i in range(1, len(budget_amount)):
     monthly_difference.append(int(budget_amount[i]) - int(budget_amount[i - 1]))
 
-print("monthly difference: ", str(monthly_difference))
+# print("monthly difference: ", str(monthly_difference))
 
-# Find the largest monthly change in profit/loss
+
+# Find the average monthly change in profit/loss values
+avg_profit_loss_change = statistics.mean(monthly_difference)
+#print(avg_profit_loss_change)
+rounded_average = round(avg_profit_loss_change,2)
+#print(rounded_average)
+
+# Find the largest monthly change in profit/loss and the month it occurred
 max_profit_loss_change = max(monthly_difference)
-print(max_profit_loss_change)
+#print(max_profit_loss_change)
 
-# Find the smallest monthly change in profit/loss
+max_pos = monthly_difference.index(max_profit_loss_change)
+#print(max_pos)
+
+max_month = day[max_pos + 1]
+#print(max_month)
+
+
+# Find the smallest monthly change in profit/loss and the month it occurred
 min_profit_loss_change = min(monthly_difference)
-print(min_profit_loss_change)
+#print(min_profit_loss_change)
 
+min_pos = monthly_difference.index(min_profit_loss_change)
+#print(min_pos)
+
+min_month = day[min_pos + 1]
+#print(min_month)
+
+print("")
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {total_num_months}")
+print(f"Total: ${total_profit_loss}")
+print(f"Average Change: ${(rounded_average)}")
+print(f"Greatest Increase in Profits: {max_month}: ({max_profit_loss_change})")
+print(f"Greatest Decrease in Profits: {min_month}: ({min_profit_loss_change})")
